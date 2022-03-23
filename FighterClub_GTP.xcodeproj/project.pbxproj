@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76F9827EBDC5F005CBAF5 /* main.swift */; };
+		4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4BA76F9527EBDC5F005CBAF5 /* FighterClub_GTP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FighterClub_GTP; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA76F9827EBDC5F005CBAF5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,17 @@
 			isa = PBXGroup;
 			children = (
 				4BA76F9827EBDC5F005CBAF5 /* main.swift */,
+				4BA76F9F27EBDC6D005CBAF5 /* Fighters */,
+				4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */,
 			);
 			path = FighterClub_GTP;
+			sourceTree = "<group>";
+		};
+		4BA76F9F27EBDC6D005CBAF5 /* Fighters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fighters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */,
+				4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
