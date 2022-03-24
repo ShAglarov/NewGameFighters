@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76F9827EBDC5F005CBAF5 /* main.swift */; };
 		4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */; };
+		4BA76FA327EC0996005CBAF5 /* Avarec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA227EC0996005CBAF5 /* Avarec.swift */; };
+		4BA76FA527EC09A5005CBAF5 /* Darginec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA427EC09A5005CBAF5 /* Darginec.swift */; };
+		4BA76FA727EC09B9005CBAF5 /* Lakec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA627EC09B9005CBAF5 /* Lakec.swift */; };
+		4BA76FA927EC09DD005CBAF5 /* Kymuk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA827EC09DD005CBAF5 /* Kymuk.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +31,10 @@
 		4BA76F9527EBDC5F005CBAF5 /* FighterClub_GTP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FighterClub_GTP; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA76F9827EBDC5F005CBAF5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
+		4BA76FA227EC0996005CBAF5 /* Avarec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avarec.swift; sourceTree = "<group>"; };
+		4BA76FA427EC09A5005CBAF5 /* Darginec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darginec.swift; sourceTree = "<group>"; };
+		4BA76FA627EC09B9005CBAF5 /* Lakec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lakec.swift; sourceTree = "<group>"; };
+		4BA76FA827EC09DD005CBAF5 /* Kymuk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kymuk.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				4BA76F9827EBDC5F005CBAF5 /* main.swift */,
-				4BA76F9F27EBDC6D005CBAF5 /* Fighters */,
 				4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */,
+				4BA76F9F27EBDC6D005CBAF5 /* Fighters */,
 			);
 			path = FighterClub_GTP;
 			sourceTree = "<group>";
@@ -69,6 +77,10 @@
 		4BA76F9F27EBDC6D005CBAF5 /* Fighters */ = {
 			isa = PBXGroup;
 			children = (
+				4BA76FA227EC0996005CBAF5 /* Avarec.swift */,
+				4BA76FA427EC09A5005CBAF5 /* Darginec.swift */,
+				4BA76FA627EC09B9005CBAF5 /* Lakec.swift */,
+				4BA76FA827EC09DD005CBAF5 /* Kymuk.swift */,
 			);
 			path = Fighters;
 			sourceTree = "<group>";
@@ -131,8 +143,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA76FA727EC09B9005CBAF5 /* Lakec.swift in Sources */,
 				4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */,
+				4BA76FA327EC0996005CBAF5 /* Avarec.swift in Sources */,
+				4BA76FA527EC09A5005CBAF5 /* Darginec.swift in Sources */,
 				4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */,
+				4BA76FA927EC09DD005CBAF5 /* Kymuk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
