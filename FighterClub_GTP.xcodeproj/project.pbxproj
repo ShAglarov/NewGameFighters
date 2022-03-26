@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B48178A27EE675E00FC08FF /* Russkiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48178927EE675E00FC08FF /* Russkiy.swift */; };
+		4B48178D27EEF22500FC08FF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48178C27EEF22500FC08FF /* Game.swift */; };
+		4B48178F27EEF26C00FC08FF /* FightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48178E27EEF26C00FC08FF /* FightState.swift */; };
 		4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76F9827EBDC5F005CBAF5 /* main.swift */; };
 		4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */; };
 		4BA76FA327EC0996005CBAF5 /* Avarec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA227EC0996005CBAF5 /* Avarec.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B48178927EE675E00FC08FF /* Russkiy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Russkiy.swift; sourceTree = "<group>"; };
+		4B48178C27EEF22500FC08FF /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		4B48178E27EEF26C00FC08FF /* FightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightState.swift; sourceTree = "<group>"; };
 		4BA76F9527EBDC5F005CBAF5 /* FighterClub_GTP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FighterClub_GTP; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA76F9827EBDC5F005CBAF5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
@@ -68,7 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				4BA76F9827EBDC5F005CBAF5 /* main.swift */,
+				4B48178C27EEF22500FC08FF /* Game.swift */,
 				4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */,
+				4B48178E27EEF26C00FC08FF /* FightState.swift */,
 				4BA76F9F27EBDC6D005CBAF5 /* Fighters */,
 			);
 			path = FighterClub_GTP;
@@ -81,6 +89,7 @@
 				4BA76FA427EC09A5005CBAF5 /* Darginec.swift */,
 				4BA76FA627EC09B9005CBAF5 /* Lakec.swift */,
 				4BA76FA827EC09DD005CBAF5 /* Kymuk.swift */,
+				4B48178927EE675E00FC08FF /* Russkiy.swift */,
 			);
 			path = Fighters;
 			sourceTree = "<group>";
@@ -145,10 +154,13 @@
 			files = (
 				4BA76FA727EC09B9005CBAF5 /* Lakec.swift in Sources */,
 				4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */,
+				4B48178F27EEF26C00FC08FF /* FightState.swift in Sources */,
 				4BA76FA327EC0996005CBAF5 /* Avarec.swift in Sources */,
 				4BA76FA527EC09A5005CBAF5 /* Darginec.swift in Sources */,
+				4B48178A27EE675E00FC08FF /* Russkiy.swift in Sources */,
 				4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */,
 				4BA76FA927EC09DD005CBAF5 /* Kymuk.swift in Sources */,
+				4B48178D27EEF22500FC08FF /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
