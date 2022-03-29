@@ -1,24 +1,103 @@
 //
-//  Game.swift
+//  File.swift
 //  FighterClub_GTP
 //
-//  Created by Shamil Aglarov on 26.03.2022.
+//  Created by Shamil Aglarov on 28.03.2022.
 //
 
 import Foundation
 class Game {
     private var fightState: FightState
-    private var fighter: Fighter = Avarec(name: "ГЕРОЙ ЕЩЕ НЕ СОЗДАН")
-    var player1: Fighter = Avarec(name: "ГЕРОЙ ЕЩЕ НЕ СОЗДАН")
-    var player2: Fighter =  Avarec(name: "ГЕРОЙ ЕЩЕ НЕ СОЗДАН")
+    private var fighter: Fighter?
+    private var player1: Fighter?
+    private var player2: Fighter?
     var win = ""
     var round = 1
     init() {
         fightState = FightState.nextRound
     }
+    func startGame() {
+        print("ИГРОК - 1 СОЗДАЕТ БОЙЦА")
+        player1 = createFighter()
+        print("ИГРОК - 2 СОЗДАЕТ БОЙЦА")
+        player2 = createFighter()
+        startFight()
+    }
+    func startFight() {
+        while fightState == FightState.nextRound {
+            print("""
+                    ------------------------------------------------------------
+                    ------------------------------------------------------------
+                    """)
+            print("Для старта \(round)-го раунда, нажмите Enter")
+            _ = readLine()
+            print("РАУНД \(round)")
+            print("""
+                    ------------------------------------------------------------
+                    """)
+            player1?.showStats()
+            calculateDamage(agressor: player1 ?? Avarec(name: ""), victim: player2 ?? Avarec(name: ""))
+            if fightState == FightState.stopRound {
+                print("")
+            } else {
+                print("""
+                        ------------------------------------------------------------
+                        ------------------------------------------------------------
+                        """)
+            }
+            player2?.showStats()
+            calculateDamage(agressor: player2 ?? Avarec(name: ""), victim: player1 ?? Avarec(name: ""))
+            round += 1
+        }
+        print("""
+                ------------------------------------------------------------
+                ------------------------------------------------------------
+                """)
+    }
     func createFighter() -> Fighter {
-        print("Назовите своего бойца")
-        let name = readLine() ?? "nil"
+        print("НАЗОВИТЕ СВОЕГО БОЙЦА")
+        guard let nameFighter = readLine() else { return createFighter() }
+        guard nameFighter != "" else { return createFighter() }
+        ///создаем выбранного бойца
+        switch selectFighter() {
+        case "1":fighter = Avarec(name: nameFighter)
+        case "2":fighter = Darginec(name: nameFighter)
+        case "3":fighter = Lakec(name: nameFighter)
+        case "4":fighter = Kymuk(name: nameFighter)
+        case "5":fighter = Russkiy(name: nameFighter)
+        default:
+            print("Не выбран ни один боец, начните игру заново")
+            break
+        }
+        //очки умений
+        var points = 6
+        
+        while points > 0 {
+            points -= 1
+            fighter?.showStats()
+            print("""
+                    ------------------------------------------------------
+                    ------------------------------------------------------
+                    Распределите очки умений среди характеристик персонажа:
+                    + 1 Силы: +\(fighter?.strenght ?? 0) к урону
+                    + 1 Ловкости: +\(fighter?.agility ?? 0)% увернуться от атаки
+                    + 1 Живучести: +\(fighter?.vitality ?? 0) HP
+                    -------------------------------------------------------
+                    """)
+            let inputPoints = readLine()
+            switch inputPoints {
+            case "1": fighter?.strenght += 1
+            case "2": fighter?.agility += 1
+            case "3": fighter?.vitality += 1
+            default:
+                points += 1
+            }
+        }
+        return fighter ?? Avarec(name: "nil")
+    }
+    ///Возвращает номер класса выбранного героя
+    private func selectFighter() -> String {
+        var fighterType: String
         print("""
                 Выберите класс героя:
                 1: Аварец
@@ -27,114 +106,40 @@ class Game {
                 4: Кумык
                 5: Русский
                 """)
-        let fighterType = readLine() ?? "nil"
-        switch (fighterType) {
-        case "1": fighter = Avarec(name: name)
-        case "2": fighter = Darginec(name: name)
-        case "3": fighter = Lakec(name: name)
-        case "4": fighter = Kumuk(name: name)
-        case "5": fighter = Russkiy(name: name)
-        default : print("Вы не выбрали бойца из предложенных вариантов, начните игру заного")
-            break
-        }
-        // очки умений
-        var points: uint8 = 6
-        print("""
-                ------------------------------------------------------
-                ------------------------------------------------------
-                Распределите очки умений среди характеристик персонажа:
-                + 1 Силы: +\(fighter.strenght) к урону
-                + 1 Ловкости: +\(fighter.agility)% увернуться от атаки
-                + 1 Живучести: +\(fighter.vitality) HP
-                -------------------------------------------------------
-                """)
-        while points > 0 {
-            points -= 1
-            fighter.showStats2()
-            print("""
-                    -------------------------------------------------------
-                    Распределите очки умений
-                    Осталось очков умений: \(points)
-                    1: + 1 Силы
-                    2: + 1 Ловкости
-                    3: + 1 Живучести
-                    """)
-            let enterAbility = readLine() ?? "nill"
-            switch (enterAbility) {
-            case "1": fighter.strenght += 1
-            case "2": fighter.agility += 1
-            case "3": fighter.vitality += 1
-            default:
-                print("вы не выбрали из предложенных вам вариантов, начните игру заново")
-            }
-        }
-        return fighter
-    }
-    
-    func startGame(){
-        print("ИГРОК 1 СОЗДАЕТ БОЙЦА")
-        player1 = createFighter()
-        print("ИГРОК 2 СОЗДАЕТ БОЙЦА")
-        player2 =  createFighter()
-        startFight()
+        fighterType = readLine() ?? ""
+        guard fighterType != "" else { return selectFighter() }
+        return fighterType
     }
     func calculateDamage(agressor: Fighter, victim: Fighter) {
-        var damage: uint16 = 0
-        if (victim.dodgeChance > Int.random(in: 1..<101)) {
-            print(" \(agressor.name) хотел ударить, но \(victim.name) увернулся от удара")
-        } else {
-            damage = agressor.kick()
-            victim.hpFighter -= Int16(damage)
-            print("\(agressor.name) ударил и нанес \(damage) урона, но \(victim.name) сделал(а) вид что не почувствовал(а) боли")
-            victim.hpFighter -= Int16(agressor.useUltimateAbility())
-        }
-        if agressor.isFighterDead == true {
+        if agressor.isFighterDead {
+            win = victim.name
             print("""
                     ------------------------------------------------------------
                     ------------------------------------------------------------
                     
                     """)
-            print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ(А) \(win) НА \(round) РАУНДЕ")
+            print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ \(win) НА \(round) РАУНДЕ")
             fightState = FightState.stopRound
-        } else if victim.isFighterDead == true {
+            return
+        } else if victim.isFighterDead {
             win = agressor.name
             print("""
                     ------------------------------------------------------------
                     ------------------------------------------------------------
                     
                     """)
-            print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ(А) \(win) НА \(round) РАУНДЕ")
+            print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ \(win) НА \(round) РАУНДЕ")
             fightState = FightState.stopRound
+            return
         }
-    }
-    
-    func startFight() {
-        repeat {
-            print("РАУНД \(round)")
-            print("""
-                    ------------------------------------------------------------
-                    """)
-            calculateDamage(agressor: player1, victim: player2)
-            if fightState == FightState.stopRound {
-                print("")
-            } else {
-                print("""
-                        ------------------------------------------------------------
-                        ------------------------------------------------------------
-                        """)
-                calculateDamage(agressor: player2, victim: player1)
-                round += 1
-            }
-            print("""
-                    ------------------------------------------------------------
-                    ------------------------------------------------------------
-                    """)
-            print("ИГРОК 1")
-            player1.showStats()
-            print("ИГРОК 2")
-            player2.showStats()
-            _ = readLine()
-            
-        } while fightState == FightState.nextRound
+        var damage: uint16 = 0
+        if victim.dodgeChance > uint16.random(in: 1..<101) {
+            print("\(agressor.name) хотел ударить, но \(victim.name) увернулся от удара.")
+        } else {
+            damage = agressor.kick()
+            victim.hpFighter -= Int16(damage)
+            print("\(agressor.name) ударил и нанес противнику \(damage) урона.")
+            victim.hpFighter -= Int16(agressor.useUltimateAbility())
+        }
     }
 }
