@@ -23,7 +23,7 @@ class Fighter: UseUltimateAbility {
     class var hpMultiplier: Int16 { return 100 }
     
     //Количество очков умений при создании бойца
-    class var PointsNumber: uint16 { return 5 }
+    class var pointsNumber: uint16 { return 5 }
     
     //Имя бойца
     var name: String
@@ -35,7 +35,7 @@ class Fighter: UseUltimateAbility {
     let ultimateAbilityDescription: String
     
     //Урон бойца
-    var damageFighter: uint16 = 0
+    lazy var damageFighter: uint16 = 0
     
     //_strenght хранит информацию полученную из метода strenght
     private var _strenght: uint16 = 0
