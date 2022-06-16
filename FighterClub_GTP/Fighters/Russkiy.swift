@@ -28,3 +28,5 @@ class Russkiy: Fighter {
                    vitality: 4)
     }
 }
+
+

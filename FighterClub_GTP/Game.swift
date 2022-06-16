@@ -30,7 +30,7 @@ class Game {
                     ------------------------------------------------------------
                     """)
             print("Для старта \(round)-го раунда, нажмите Enter")
-            _ = readLine()
+            //_ = readLine()
             print("РАУНД \(round)")
             print("""
                     ------------------------------------------------------------
@@ -63,7 +63,7 @@ class Game {
         case "1":fighter = Avarec(name: nameFighter)
         case "2":fighter = Darginec(name: nameFighter)
         case "3":fighter = Lakec(name: nameFighter)
-        case "4":fighter = Kymuk(name: nameFighter)
+        //case "4":fighter = Kymuk(name: nameFighter)
         case "5":fighter = Russkiy(name: nameFighter)
         default:
             print("Не выбран ни один боец, начните игру заново")

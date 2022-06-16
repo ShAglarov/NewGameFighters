@@ -18,7 +18,7 @@ class Darginec: Fighter {
         let attemptToOfferMoney = uint16.random(in: 0...30001)
         if attemptToOfferMoney >= 29000 {
             fightBought = 1000
-            print("\(name) предложил 1 доллар, и противник слил бой упав в фейковый накаут")
+            print("\(name) предложил 1 доллар, и противник слил бой упав в фейковый нокаут")
         } else {
             fightBought = 0
             print("Попытка подкупить не прошла, \(name) не нанес никакого урона")
@@ -30,7 +30,7 @@ class Darginec: Fighter {
                    classDescription: "Даргинец",
                    ultimateAbilityDescription: "Богатый, может купить любого",
                    strenght: 3,
-                   agility: 0,
+                   agility: 5,
                    vitality: 3)
     }
 }
