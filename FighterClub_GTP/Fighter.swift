@@ -3,10 +3,6 @@
 //
 
 import Foundation
-//Особое умение
-protocol UseUltimateAbility {
-    func useUltimateAbility() -> uint16
-}
 
 //Класс определяет общую сущность бойцов
 class Fighter: UseUltimateAbility {
@@ -67,13 +63,9 @@ class Fighter: UseUltimateAbility {
             dodgeChance = _agility * Fighter.dodgeMultiplier
         }
     }
-    
-    ///Статус бойца Погиб?, true  - да
-    //                     false - нет
-    var isFighterDead: Bool = false
-    
+
     ///_hpFighter хранит информацию о количестве жизней, полученую из метода hpFighter
-    private var _hpFighter: Int16 = 0
+    var _hpFighter: Int16 = 0
     
     ///Метод hpFighter, возвращает количество hp, если hp достигает <= 0, передает информацию
     ///о смерти бойца в переменную fighterIsDead
@@ -83,10 +75,7 @@ class Fighter: UseUltimateAbility {
         }
         set(newValue) {
             _hpFighter = newValue
-            if _hpFighter <= 0 {
-                isFighterDead = true
-                _hpFighter = 0
-            }
+            isFighterDead()
         }
     }
     

@@ -6,16 +6,16 @@
 //
 
 import Foundation
+
+
+
 class Game {
-    private var fightState: FightState
-    private var fighter: Fighter?
+    var fighter: Fighter?
     private var player1: Fighter?
     private var player2: Fighter?
     var win = ""
     var round = 1
-    init() {
-        fightState = FightState.nextRound
-    }
+    
     func startGame() {
         print("ИГРОК - 1 СОЗДАЕТ БОЙЦА")
         player1 = createFighter()
@@ -24,7 +24,7 @@ class Game {
         startFight()
     }
     func startFight() {
-        while fightState == FightState.nextRound {
+        while isDeadDelegate?.isFighterDead() == false {
             print("""
                     ------------------------------------------------------------
                     ------------------------------------------------------------
@@ -37,14 +37,12 @@ class Game {
                     """)
             player1?.showStats()
             calculateDamage(agressor: player1 ?? Avarec(name: ""), victim: player2 ?? Avarec(name: ""))
-            if fightState == FightState.stopRound {
-                print("")
-            } else {
+
                 print("""
                         ------------------------------------------------------------
                         ------------------------------------------------------------
                         """)
-            }
+            
             player2?.showStats()
             calculateDamage(agressor: player2 ?? Avarec(name: ""), victim: player1 ?? Avarec(name: ""))
             round += 1
@@ -111,7 +109,7 @@ class Game {
         return fighterType
     }
     func calculateDamage(agressor: Fighter, victim: Fighter) {
-        if agressor.isFighterDead {
+        if agressor.isFighterDead() {
             win = victim.name
             print("""
                     ------------------------------------------------------------
@@ -119,9 +117,8 @@ class Game {
                     
                     """)
             print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ \(win) НА \(round) РАУНДЕ")
-            fightState = FightState.stopRound
             return
-        } else if victim.isFighterDead {
+        } else if victim.isFighterDead() {
             win = agressor.name
             print("""
                     ------------------------------------------------------------
@@ -129,7 +126,6 @@ class Game {
                     
                     """)
             print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ \(win) НА \(round) РАУНДЕ")
-            fightState = FightState.stopRound
             return
         }
         var damage: uint16 = 0
@@ -143,3 +139,5 @@ class Game {
         }
     }
 }
+
+

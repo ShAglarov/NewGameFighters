@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		4B48178A27EE675E00FC08FF /* Russkiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48178927EE675E00FC08FF /* Russkiy.swift */; };
 		4B48178D27EEF22500FC08FF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48178C27EEF22500FC08FF /* Game.swift */; };
-		4B48178F27EEF26C00FC08FF /* FightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48178E27EEF26C00FC08FF /* FightState.swift */; };
 		4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76F9827EBDC5F005CBAF5 /* main.swift */; };
 		4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */; };
 		4BA76FA327EC0996005CBAF5 /* Avarec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA227EC0996005CBAF5 /* Avarec.swift */; };
 		4BA76FA527EC09A5005CBAF5 /* Darginec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA427EC09A5005CBAF5 /* Darginec.swift */; };
 		4BA76FA727EC09B9005CBAF5 /* Lakec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA627EC09B9005CBAF5 /* Lakec.swift */; };
 		4BA76FA927EC09DD005CBAF5 /* Kymuk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA76FA827EC09DD005CBAF5 /* Kymuk.swift */; };
+		4BDF3735285AB59600E00E1F /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF3734285AB59600E00E1F /* Protocols.swift */; };
+		4BDF3737285AB5BE00E00E1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF3736285AB5BE00E00E1F /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +34,6 @@
 /* Begin PBXFileReference section */
 		4B48178927EE675E00FC08FF /* Russkiy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Russkiy.swift; sourceTree = "<group>"; };
 		4B48178C27EEF22500FC08FF /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		4B48178E27EEF26C00FC08FF /* FightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightState.swift; sourceTree = "<group>"; };
 		4BA76F9527EBDC5F005CBAF5 /* FighterClub_GTP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FighterClub_GTP; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA76F9827EBDC5F005CBAF5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
@@ -41,6 +41,8 @@
 		4BA76FA427EC09A5005CBAF5 /* Darginec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darginec.swift; sourceTree = "<group>"; };
 		4BA76FA627EC09B9005CBAF5 /* Lakec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lakec.swift; sourceTree = "<group>"; };
 		4BA76FA827EC09DD005CBAF5 /* Kymuk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kymuk.swift; sourceTree = "<group>"; };
+		4BDF3734285AB59600E00E1F /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		4BDF3736285AB5BE00E00E1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,8 @@
 				4BA76F9827EBDC5F005CBAF5 /* main.swift */,
 				4B48178C27EEF22500FC08FF /* Game.swift */,
 				4BA76FA027EBDCA3005CBAF5 /* Fighter.swift */,
-				4B48178E27EEF26C00FC08FF /* FightState.swift */,
+				4BDF3734285AB59600E00E1F /* Protocols.swift */,
+				4BDF3736285AB5BE00E00E1F /* Extensions.swift */,
 				4BA76F9F27EBDC6D005CBAF5 /* Fighters */,
 			);
 			path = FighterClub_GTP;
@@ -122,7 +125,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					4BA76F9427EBDC5F005CBAF5 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -154,12 +157,13 @@
 			files = (
 				4BA76FA727EC09B9005CBAF5 /* Lakec.swift in Sources */,
 				4BA76F9927EBDC5F005CBAF5 /* main.swift in Sources */,
-				4B48178F27EEF26C00FC08FF /* FightState.swift in Sources */,
 				4BA76FA327EC0996005CBAF5 /* Avarec.swift in Sources */,
 				4BA76FA527EC09A5005CBAF5 /* Darginec.swift in Sources */,
+				4BDF3735285AB59600E00E1F /* Protocols.swift in Sources */,
 				4B48178A27EE675E00FC08FF /* Russkiy.swift in Sources */,
 				4BA76FA127EBDCA3005CBAF5 /* Fighter.swift in Sources */,
 				4BA76FA927EC09DD005CBAF5 /* Kymuk.swift in Sources */,
+				4BDF3737285AB5BE00E00E1F /* Extensions.swift in Sources */,
 				4B48178D27EEF22500FC08FF /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +289,7 @@
 		4BA76F9D27EBDC5F005CBAF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -294,6 +299,7 @@
 		4BA76F9E27EBDC5F005CBAF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
