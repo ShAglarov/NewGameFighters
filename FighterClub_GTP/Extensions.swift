@@ -7,14 +7,10 @@
 
 import Foundation
 
-extension Fighter: IsDeadFighterDelegate {
-    func isFighterDead() -> Bool {
-        guard _hpFighter <= 0 else { return false }
-        _hpFighter = 0
-        return true
+extension Game: IsDeadFighterDelegate {
+    
+    func fighterDied() {
+        isGameOver = true
     }
-}
-
-extension Game {
-    var isDeadDelegate: IsDeadFighterDelegate? { return fighter }
+    
 }

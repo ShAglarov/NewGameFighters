@@ -7,24 +7,24 @@
 
 import Foundation
 
-
-
-class Game {
-    var fighter: Fighter?
+final class Game {
     private var player1: Fighter?
     private var player2: Fighter?
+    var isGameOver = false
     var win = ""
     var round = 1
     
     func startGame() {
         print("ИГРОК - 1 СОЗДАЕТ БОЙЦА")
         player1 = createFighter()
+        player1?.delegate = self
         print("ИГРОК - 2 СОЗДАЕТ БОЙЦА")
         player2 = createFighter()
+        player2?.delegate = self
         startFight()
     }
     func startFight() {
-        while isDeadDelegate?.isFighterDead() == false {
+        while !isGameOver {
             print("""
                     ------------------------------------------------------------
                     ------------------------------------------------------------
@@ -57,12 +57,14 @@ class Game {
         guard let nameFighter = readLine() else { return createFighter() }
         guard nameFighter != "" else { return createFighter() }
         ///создаем выбранного бойца
+        
+        var fighter: Fighter?
         switch selectFighter() {
-        case "1":fighter = Avarec(name: nameFighter)
-        case "2":fighter = Darginec(name: nameFighter)
-        case "3":fighter = Lakec(name: nameFighter)
-        //case "4":fighter = Kymuk(name: nameFighter)
-        case "5":fighter = Russkiy(name: nameFighter)
+        case "1": fighter = Avarec(name: nameFighter)
+        case "2": fighter = Darginec(name: nameFighter)
+        case "3": fighter = Lakec(name: nameFighter)
+        case "4": fighter = Kumuk(name: nameFighter)
+        case "5": fighter = Russkiy(name: nameFighter)
         default:
             print("Не выбран ни один боец, начните игру заново")
             break

@@ -6,9 +6,13 @@ import Foundation
 
 //Класс определяет общую сущность бойцов
 class Fighter: UseUltimateAbility {
+    
     func useUltimateAbility() -> uint16 {
         fatalError("ЭТО ДОЛЖНО БЫТЬ РЕАЛИЗОВАНО В ДОЧЕРНИХ КЛАССАХ")
     }
+    
+    var delegate: IsDeadFighterDelegate?
+    
     ///Множитель урона
     class var damageMultiplier: uint16 { return 10 }
     
@@ -75,7 +79,9 @@ class Fighter: UseUltimateAbility {
         }
         set(newValue) {
             _hpFighter = newValue
-            isFighterDead()
+            if isFighterDead() {
+                delegate?.fighterDied()
+            }
         }
     }
     
@@ -129,4 +135,11 @@ class Fighter: UseUltimateAbility {
         let totalDamage: uint16 = uint16.random(in: damageFighter-Fighter.damageMultiplier...damageFighter+Fighter.damageMultiplier)
         return totalDamage
     }
+    
+    func isFighterDead() -> Bool {
+        guard _hpFighter <= 0 else { return false }
+        _hpFighter = 0
+        return true
+    }
+    
 }
