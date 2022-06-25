@@ -3,44 +3,42 @@
 //
 
 import Foundation
-//Особое умение
-protocol UseUltimateAbility {
-    func useUltimateAbility() -> uint16
-}
 
 //Класс определяет общую сущность бойцов
 class Fighter: UseUltimateAbility {
+    
     func useUltimateAbility() -> uint16 {
         fatalError("ЭТО ДОЛЖНО БЫТЬ РЕАЛИЗОВАНО В ДОЧЕРНИХ КЛАССАХ")
     }
-    //Множитель урона
+    
+    ///Множитель урона
     class var damageMultiplier: uint16 { return 10 }
     
-    //Множитель шанса увернуться
+    ///Множитель шанса увернуться
     class var dodgeMultiplier: uint16 { return 6 }
     
-    //Множитель очков здоровья
+    ///Множитель очков здоровья
     class var hpMultiplier: Int16 { return 100 }
     
-    //Количество очков умений при создании бойца
-    class var PointsNumber: uint16 { return 5 }
+    ///Количество очков умений при создании бойца
+    class var pointsNumber: uint16 { return 5 }
     
-    //Имя бойца
+    ///Имя бойца
     var name: String
     
-    //Описание класса бойца
+    ///Описание класса бойца
     var classDescription: String
     
-    //Описание особого умения
+    ///Описание особого умения
     let ultimateAbilityDescription: String
     
-    //Урон бойца
-    var damageFighter: uint16 = 0
+    ///Урон бойца
+    lazy var damageFighter: uint16 = 0
     
-    //_strenght хранит информацию полученную из метода strenght
+    ///_strenght хранит информацию полученную из метода strenght
     private var _strenght: uint16 = 0
     
-    //Метод strenght возвращает нанесенный урон в зависимости от количества силы бойца
+    ///Метод strenght возвращает нанесенный урон в зависимости от количества силы бойца
     var strenght: uint16 {
         get {
             return _strenght
@@ -51,13 +49,13 @@ class Fighter: UseUltimateAbility {
         }
     }
     
-    //Шанс увернуться
+    ///Шанс увернуться
     var dodgeChance: uint16 = 0
     
-    //_agility хранит информацию о ловкости, полученную из метода agility
+    ///_agility хранит информацию о ловкости, полученную из метода agility
     private var _agility: uint16 = 0
     
-    //Метод agility возвращает полученную ловкость в зависимости от количество единиц ловкости
+    ///Метод agility возвращает полученную ловкость в зависимости от количество единиц ловкости
     var agility: uint16 {
         get {
             return _agility
@@ -67,34 +65,37 @@ class Fighter: UseUltimateAbility {
             dodgeChance = _agility * Fighter.dodgeMultiplier
         }
     }
+
+    ///_hpFighter хранит информацию о количестве жизней, полученую из метода hpFighter
+    var _hpFighter: Int16 = 0
     
-    //Статус бойца Погиб?, true  - да
-    //                     false - нет
-    var isFighterDead: Bool = false
+    ///Метод hpFighter, возвращает количество hp, если hp достигает <= 0, передает информацию
+    ///о смерти бойца в переменную fighterIsDead
+    var delegate: IsDeadFighterDelegate?
     
-    //_hpFighter хранит информацию о количестве жизней, полученую из метода hpFighter
-    private var _hpFighter: Int16 = 0
+    func isFighterDead() -> Bool {
+        guard _hpFighter <= 0 else { return false }
+        _hpFighter = 0
+        return true
+    }
     
-    //Метод hpFighter, возвращает количество hp, если hp достигает <= 0, передает информацию
-    //о смерти бойца в переменную fighterIsDead
     var hpFighter: Int16 {
         get {
             return _hpFighter
         }
         set(newValue) {
             _hpFighter = newValue
-            if _hpFighter <= 0 {
-                isFighterDead = true
-                _hpFighter = 0
+            if isFighterDead() {
+                delegate?.fighterDead()
             }
         }
     }
     
-    //_vitality хранит информацию о живучести бойца
+    ///_vitality хранит информацию о живучести бойца
     private var _vitality: uint16 = 0
     
-    //Метод vitality хранит информацию о живучести, так же возвращает количество hp
-    //в зависимости от количетства vitality
+    ///Метод vitality хранит информацию о живучести, так же возвращает количество hp
+    ///в зависимости от количетства vitality
     var vitality: uint16 {
         get {
             return _vitality
@@ -105,7 +106,7 @@ class Fighter: UseUltimateAbility {
         }
     }
     
-    //Инициализация класса Fighter
+    ///Инициализация класса Fighter
     init(name: String,
          classDescription: String,
          ultimateAbilityDescription: String,
@@ -135,7 +136,7 @@ class Fighter: UseUltimateAbility {
                 Умение:\(ultimateAbilityDescription)
                 """)
     }
-    //Функция расчитывающая нанесеный удар и возвращающая его количество на выходе
+    ///Функция расчитывающая нанесеный удар и возвращающая его количество на выходе
     func kick() -> uint16 {
         let totalDamage: uint16 = uint16.random(in: damageFighter-Fighter.damageMultiplier...damageFighter+Fighter.damageMultiplier)
         return totalDamage

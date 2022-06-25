@@ -16,34 +16,11 @@ class Darginec: Fighter {
          */
         var fightBought: uint32
         let attemptToOfferMoney = uint16.random(in: 0...30001)
-        switch attemptToOfferMoney {
-        case 1: fightBought = 10000
-            print("\(name) предложил 1 доллар, и противник слил бой упав в фейковый накаут")
-        case 1000: fightBought = 10000
-            print("\(name) предложил 1000 долларов, и противник слил бой упав в фейковый накаут")
-        case 2000: fightBought = 10000
-            print("\(name) предложил 2000 долларов, и противник слил бой упав в фейковый накаут")
-        case 3000: fightBought = 10000
-            print("\(name) предложил 3000 долларов, и противник слил бой упав в фейковый накаут")
-        case 4000: fightBought = 10000
-            print("\(name) предложил 4000 долларов, и противник слил бой упав в фейковый накаут")
-        case 5000: fightBought = 10000
-            print("\(name) предложил 5000 долларов, и противник слил бой упав в фейковый накаут")
-        case 6000: fightBought = 10000
-            print("\(name) предложил 6000 долларов, и противник слил бой упав в фейковый накаут")
-        case 7000: fightBought = 10000
-            print("\(name) предложил 7000 долларов, и противник слил бой упав в фейковый накаут")
-        case 8000: fightBought = 10000
-            print("\(name) предложил 8000 долларов, и противник слил бой упав в фейковый накаут")
-        case 9000: fightBought = 10000
-            print("\(name) предложил 9000 долларов, и противник слил бой упав в фейковый накаут")
-        case 10000: fightBought = 10000
-            print("\(name) предложил 10000 долларов, и противник слил бой упав в фейковый накаут")
-        case 20000: fightBought = 10000
-            print("\(name) предложил 20000 долларов, и противник слил бой упав в фейковый накаут")
-        case 30000: fightBought = 10000
-            print("\(name) предложил 1000 долларов, и противник слил бой упав в фейковый накаут")
-        default: fightBought = 0
+        if attemptToOfferMoney >= 29000 {
+            fightBought = 1000
+            print("\(name) предложил 1 доллар, и противник слил бой упав в фейковый нокаут")
+        } else {
+            fightBought = 0
             print("Попытка подкупить не прошла, \(name) не нанес никакого урона")
         }
         return uint16(fightBought)
@@ -53,7 +30,7 @@ class Darginec: Fighter {
                    classDescription: "Даргинец",
                    ultimateAbilityDescription: "Богатый, может купить любого",
                    strenght: 3,
-                   agility: 0,
+                   agility: 5,
                    vitality: 3)
     }
 }

@@ -8,9 +8,9 @@
 import Foundation
 class Russkiy: Fighter {
     override func useUltimateAbility() -> uint16 {
-        var totalDamage: uint16 = uint16.random(in: 50...100)
+        var totalDamage: uint16 = uint16.random(in: 1...100)
         if totalDamage < 50 {
-            totalDamage = totalDamage * 3
+            totalDamage = (totalDamage * Fighter.damageMultiplier) / 2
             print("\(name) бахнул 100гр. водочки, позвал своего кореша медьведя и нанес противнику \(totalDamage) урона")
         }
         if totalDamage == 50 {
@@ -23,8 +23,10 @@ class Russkiy: Fighter {
         super.init(name: name,
                    classDescription: "Русский медведь",
                    ultimateAbilityDescription: "Дружит с медьведями, обладает смертельным ударом",
-                   strenght: 3,
+                   strenght: 4,
                    agility: 0,
-                   vitality: 3)
+                   vitality: 4)
     }
 }
+
+
