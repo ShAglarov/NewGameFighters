@@ -9,7 +9,7 @@ import Foundation
 
 extension Game: IsDeadFighterDelegate {
     
-    func fighterDied() {
+    func fighterDead() {
         isGameOver = true
     }
     

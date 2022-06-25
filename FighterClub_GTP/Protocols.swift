@@ -12,5 +12,5 @@ protocol UseUltimateAbility {
 }
 //делегат (умер ли боец)
 protocol IsDeadFighterDelegate {
-    func fighterDied()
+    func fighterDead()
 }

@@ -11,8 +11,6 @@ class Fighter: UseUltimateAbility {
         fatalError("ЭТО ДОЛЖНО БЫТЬ РЕАЛИЗОВАНО В ДОЧЕРНИХ КЛАССАХ")
     }
     
-    var delegate: IsDeadFighterDelegate?
-    
     ///Множитель урона
     class var damageMultiplier: uint16 { return 10 }
     
@@ -73,6 +71,14 @@ class Fighter: UseUltimateAbility {
     
     ///Метод hpFighter, возвращает количество hp, если hp достигает <= 0, передает информацию
     ///о смерти бойца в переменную fighterIsDead
+    var delegate: IsDeadFighterDelegate?
+    
+    func isFighterDead() -> Bool {
+        guard _hpFighter <= 0 else { return false }
+        _hpFighter = 0
+        return true
+    }
+    
     var hpFighter: Int16 {
         get {
             return _hpFighter
@@ -80,7 +86,7 @@ class Fighter: UseUltimateAbility {
         set(newValue) {
             _hpFighter = newValue
             if isFighterDead() {
-                delegate?.fighterDied()
+                delegate?.fighterDead()
             }
         }
     }
@@ -135,11 +141,4 @@ class Fighter: UseUltimateAbility {
         let totalDamage: uint16 = uint16.random(in: damageFighter-Fighter.damageMultiplier...damageFighter+Fighter.damageMultiplier)
         return totalDamage
     }
-    
-    func isFighterDead() -> Bool {
-        guard _hpFighter <= 0 else { return false }
-        _hpFighter = 0
-        return true
-    }
-    
 }
